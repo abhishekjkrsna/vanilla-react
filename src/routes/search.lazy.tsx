@@ -63,6 +63,13 @@ function RouteComponent() {
                   key={person.name}
                   name={person.name}
                   birth_year={person.birth_year}
+                  height={person.height}
+                  mass={person.mass}
+                  created={person.created}
+                  number_of_films={person.number_of_films}
+                  gender={person.gender}
+                  species={person.species}
+                  home_world={person.home_world}
                 />
               ))}
             </div>
