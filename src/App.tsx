@@ -8,6 +8,7 @@ const queryClient = new QueryClient();
 
 const router = createRouter({
   routeTree,
+  basepath: "/vanilla-react",
 });
 
 function App() {
