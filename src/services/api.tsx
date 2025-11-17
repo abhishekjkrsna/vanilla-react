@@ -90,7 +90,7 @@ export async function transformData(pageData: FetchPeopleApi) {
       return {
         ...person,
         home_world: home,
-        species: species.name,
+        species: species,
         number_of_films: numberOfFilms,
         gender: gender,
       };
