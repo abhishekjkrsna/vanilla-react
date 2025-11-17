@@ -2,64 +2,64 @@
 name: Deploy React App to Pages
 
 on:
-    # Runs on pushes targeting the default branch
-    push:
-        branches: ["main"]
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
 
-    # Allows you to run this workflow manually from the Actions tab
-    workflow_dispatch:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-    contents: read
-    pages: write
-    id-token: write
+  contents: read
+  pages: write
+  id-token: write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 concurrency:
-    group: "pages"
-    cancel-in-progress: false
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-    # Build and deploy job
-    deploy:
-        environment:
-            name: github-pages
-            url: ${{ steps.deployment.outputs.page_url }}
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
+  # Build and deploy job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-            # Step 1: Set up Node.js environment
-            - name: Set up Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 22.x # Use a current LTS version
-                  cache: "npm"
+      # Step 1: Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x # Use a current LTS version
+          cache: "npm"
 
-            # Step 2: Install dependencies
-            # Using 'npm ci' is recommended for workflows for faster, reliable installs
-            - name: Install dependencies
-              run: npm ci
+      # Step 2: Install dependencies
+      # Using 'npm ci' is recommended for workflows for faster, reliable installs
+      - name: Install dependencies
+        run: npm i yarn
 
-            # Step 3: Build the React application
-            # This assumes your build script is 'npm run build'
-            - name: Build
-              run: npm run build
+      # Step 3: Build the React application
+      # This assumes your build script is 'npm run build'
+      - name: Build
+        run: yarn build
 
-            # Step 4: Setup GitHub Pages
-            - name: Setup Pages
-              uses: actions/configure-pages@v5
+      # Step 4: Setup GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
-            # Step 5: Upload the build artifact
-            - name: Upload artifact
-              uses: actions/upload-pages-artifact@v3
-              with:
-                  # Upload the 'dist' directory (or 'build' if you use Create React App)
-                  path: "./dist"
+      # Step 5: Upload the build artifact
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload the 'dist' directory (or 'build' if you use Create React App)
+          path: "./dist"
 
-            # Step 6: Deploy to GitHub Pages
-            - name: Deploy to GitHub Pages
-              id: deployment
-              uses: actions/deploy-pages@v4
+      # Step 6: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
