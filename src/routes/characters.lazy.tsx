@@ -83,7 +83,7 @@ function CharacterPage() {
               setPageNum(pageNum + 1);
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            disabled={data!.next ? false : true}
+            disabled={!data!.next}
           >
             Next
           </button>

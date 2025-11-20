@@ -6,7 +6,9 @@ export const Route = createRootRoute({
   component: () => (
     <div className="container-fluid">
       <Navbar />
-      <Outlet />
+      <main className="container">
+        <Outlet />
+      </main>
       <TanStackRouterDevtools />
       <ReactQueryDevtools />
     </div>

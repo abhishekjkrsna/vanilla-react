@@ -6,7 +6,7 @@ export const Route = createFileRoute("/")({
 
 function RouteComponent() {
   return (
-    <main className="container">
+    <div>
       <h2>App showing various Star Wars Character</h2>
       <p>
         In this App we will be listing various StarWars Characters and Info
@@ -20,6 +20,6 @@ function RouteComponent() {
         <li>React 19</li>
       </ul>
       <h3>Login using userName admin and password admin</h3>
-    </main>
+    </div>
   );
 }

@@ -32,50 +32,48 @@ function RouteComponent() {
   }
 
   return (
-    <>
+    <div>
+      <h2>Search Characters By Name</h2>
       <div>
-        <h2>Search Characters By Name</h2>
-        <div>
-          <form onSubmit={handleSearch}>
-            <input
-              type="search"
-              name="name"
-              id="name"
-              value={searchVal}
-              onChange={(e) => setSearchVal(e.target.value)}
-            />
-            <input type="submit" value="Search" />
-          </form>
-        </div>
-        <div>
-          {isPending ? (
-            submittedSearch ? (
-              <div>
-                <h3>Loading...</h3>
-              </div>
-            ) : (
-              <div></div>
-            )
-          ) : (
-            <div>
-              {data?.results.map((person: PeopleCardData) => (
-                <PeopleCard
-                  key={person.name}
-                  name={person.name}
-                  birth_year={person.birth_year}
-                  height={person.height}
-                  mass={person.mass}
-                  created={person.created}
-                  number_of_films={person.number_of_films}
-                  gender={person.gender}
-                  species={person.species}
-                  homeworld={person.homeworld}
-                />
-              ))}
-            </div>
-          )}
-        </div>
+        <form onSubmit={handleSearch}>
+          <input
+            type="search"
+            name="name"
+            id="name"
+            value={searchVal}
+            onChange={(e) => setSearchVal(e.target.value)}
+          />
+          <input type="submit" value="Search" />
+        </form>
       </div>
-    </>
+      <div>
+        {isPending ? (
+          submittedSearch ? (
+            <div>
+              <h3>Loading...</h3>
+            </div>
+          ) : (
+            <div></div>
+          )
+        ) : (
+          <div>
+            {data?.results.map((person: PeopleCardData) => (
+              <PeopleCard
+                key={person.name}
+                name={person.name}
+                birth_year={person.birth_year}
+                height={person.height}
+                mass={person.mass}
+                created={person.created}
+                number_of_films={person.number_of_films}
+                gender={person.gender}
+                species={person.species}
+                homeworld={person.homeworld}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
   );
 }

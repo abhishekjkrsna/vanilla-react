@@ -13,7 +13,7 @@ export default function PeopleCard({
   gender,
   species,
   homeworld,
-}: PeopleCardData) {
+}: Readonly<PeopleCardData>) {
   const photoUrl = `img/${gender}/face1.png`;
   const [showHome, setShowHome] = useState(false);
 
