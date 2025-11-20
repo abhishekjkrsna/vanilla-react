@@ -28,7 +28,7 @@ function LoginPage() {
     <form onSubmit={(e) => handlesubmit(e)}>
       <fieldset>
         <div>
-          <label htmlFor="">Enter Username</label>
+          <label htmlFor="username">Enter Username</label>
           <input
             type="text"
             name="username"
@@ -40,7 +40,7 @@ function LoginPage() {
           />
         </div>
         <div>
-          <label htmlFor="">Enter Password</label>
+          <label htmlFor="password">Enter Password</label>
           <input
             type="text"
             name="password"
