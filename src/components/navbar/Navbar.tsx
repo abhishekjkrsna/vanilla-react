@@ -6,30 +6,39 @@ export default function Navbar() {
   return (
     <>
       <nav>
-        <Link to="/">
-          <h1>Swapi App</h1>
-        </Link>
-        <div>
-          <span>
+        <ul>
+          <li>
+            <Link to="/">
+              <strong>Swapi App</strong>
+            </Link>
+          </li>
+        </ul>
+        <ul>
+          <li>
             <Link to="/">Home</Link>
-          </span>{" "}
-          <span>
+          </li>{" "}
+          <li>
             <Link to="/characters">Characters</Link>
-          </span>{" "}
-          <span>
+          </li>{" "}
+          <li>
             <Link to="/search">Search</Link>
-          </span>{" "}
-          <span>
+          </li>{" "}
+          <li>
             <Link to="/about">About</Link>
-          </span>{" "}
+          </li>{" "}
           {loggedIn ? (
-            <button onClick={() => setLoggedIn(false)}>Logout</button>
+            <button
+              onClick={() => setLoggedIn(false)}
+              className="outline secondary"
+            >
+              Logout
+            </button>
           ) : (
-            <span>
+            <li>
               <Link to="/login">Login</Link>
-            </span>
+            </li>
           )}
-        </div>
+        </ul>
       </nav>
     </>
   );

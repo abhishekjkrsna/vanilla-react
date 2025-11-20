@@ -6,7 +6,7 @@ export const Route = createFileRoute("/")({
 
 function RouteComponent() {
   return (
-    <main>
+    <main className="container">
       <h2>App showing various Star Wars Character</h2>
       <p>
         In this App we will be listing various StarWars Characters and Info

@@ -26,30 +26,32 @@ function LoginPage() {
   };
   return (
     <form onSubmit={(e) => handlesubmit(e)}>
-      <div>
-        <label htmlFor="">Enter Username:</label>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          value={userName}
-          onChange={(e) => {
-            setUserName(e.target.value);
-          }}
-        />
-      </div>
-      <div>
-        <label htmlFor="">Enter Password:</label>
-        <input
-          type="text"
-          name="password"
-          id="password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-      </div>
+      <fieldset>
+        <div>
+          <label htmlFor="">Enter Username</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            value={userName}
+            onChange={(e) => {
+              setUserName(e.target.value);
+            }}
+          />
+        </div>
+        <div>
+          <label htmlFor="">Enter Password</label>
+          <input
+            type="text"
+            name="password"
+            id="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+        </div>
+      </fieldset>
       <div>
         <input type="submit" value="Login" />
       </div>
