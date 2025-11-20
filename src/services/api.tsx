@@ -12,17 +12,7 @@ export async function fetchPeople(page: number = 1) {
   return data;
 }
 
-export async function fetchSpecies(url: string) {
-  const response = await fetch(url, {
-    method: "GET",
-  });
-
-  const data = await response.json();
-
-  return data;
-}
-
-export async function fetchHome(url: string) {
+export async function fetchUrl(url: string) {
   const response = await fetch(url, {
     method: "GET",
   });
@@ -61,7 +51,7 @@ export async function transformData(pageData: FetchPeopleApi) {
       if (person.species.length === 0) {
         species = "unknown";
       } else {
-        const speciesData = await fetchSpecies(person.species[0]);
+        const speciesData = await fetchUrl(person.species[0]);
         species = speciesData.name;
       }
       const numberOfFilms = person.films.length;

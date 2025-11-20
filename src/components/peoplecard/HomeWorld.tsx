@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchHome } from "../../services/api";
+import { fetchUrl } from "../../services/api";
 
-export default function HomeWorld({ homeWorldUrl }: { homeWorldUrl: string }) {
+export default function HomeWorld({
+  homeWorldUrl,
+}: Readonly<{ homeWorldUrl: string }>) {
   const noData = (
     <>
       <p>
@@ -29,7 +31,7 @@ export default function HomeWorld({ homeWorldUrl }: { homeWorldUrl: string }) {
     isSuccess,
   } = useQuery({
     queryKey: ["homeWorld", homeWorldUrl],
-    queryFn: () => fetchHome(homeWorldUrl),
+    queryFn: () => fetchUrl(homeWorldUrl),
     retry: 4,
     refetchInterval: 1000 * 2,
   });
