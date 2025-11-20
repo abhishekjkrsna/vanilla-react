@@ -56,7 +56,7 @@ export async function fetchPageData(page: number) {
 export async function transformData(pageData: FetchPeopleApi) {
   const output = await Promise.all(
     pageData.results.map(async (person: PeopleData) => {
-      let species, home;
+      let species;
 
       if (person.species.length === 0) {
         species = "unknown";
