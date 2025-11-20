@@ -1,5 +1,5 @@
 import { RouterProvider, createRouter } from "@tanstack/react-router";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { LoggedInContext, PageNumberContext } from "./context/Context";
 import { routeTree } from "./routeTree.gen";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -15,9 +15,17 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [pageNum, setPageNum] = useState(1);
 
+  const loggedInContextValue = useMemo(() => {
+    return { loggedIn, setLoggedIn };
+  }, [loggedIn]);
+
+  const PageNumberContextValue = useMemo(() => {
+    return { pageNum, setPageNum };
+  }, [pageNum]);
+
   return (
-    <LoggedInContext.Provider value={{ loggedIn, setLoggedIn }}>
-      <PageNumberContext.Provider value={{ pageNum, setPageNum }}>
+    <LoggedInContext.Provider value={loggedInContextValue}>
+      <PageNumberContext.Provider value={PageNumberContextValue}>
         <QueryClientProvider client={queryClient}>
           <RouterProvider
             router={router}

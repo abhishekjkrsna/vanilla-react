@@ -12,32 +12,65 @@ export const Route = createLazyFileRoute("/search")({
 
 function RouteComponent() {
   const { loggedIn } = useContext(LoggedInContext);
-  const [searchVal, setSearchVal] = useState("");
-  const [submittedSearch, setSubmittedSearch] = useState("");
   const navigate = useNavigate({ from: "/search" });
   if (!loggedIn) {
     navigate({ to: "/login" });
   }
+  const [searchVal, setSearchVal] = useState("");
+  const [submittedTerm, setSubmittedTerm] = useState("");
 
-  const { isPending, data } = useQuery({
-    queryKey: ["search", submittedSearch],
-    queryFn: () => searchPeopleName(submittedSearch),
-    enabled: !!submittedSearch,
+  const { isPending, data, isError, error } = useQuery({
+    queryKey: ["search", submittedTerm],
+    queryFn: () => searchPeopleName(submittedTerm),
+    enabled: !!submittedTerm,
   });
 
   function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmittedSearch(searchVal);
-    setSearchVal("");
+    if (!searchVal.trim()) return;
+    setSubmittedTerm(searchVal.trim());
   }
 
-  const isSearchSubmitted = submittedSearch ? (
-    <div>
-      <h3>Loading...</h3>
-    </div>
-  ) : (
-    <div></div>
-  );
+  const renderSearchResults = () => {
+    if (isPending && submittedTerm) {
+      return (
+        <div>
+          <h3>Loading...</h3>
+        </div>
+      );
+    }
+
+    if (isError) {
+      return (
+        <div>
+          <h3>Error: {error?.message}</h3>
+        </div>
+      );
+    }
+
+    if (!data) {
+      return null;
+    }
+
+    if (data.results.length === 0) {
+      return <p>No results found</p>;
+    }
+
+    return data.results.map((person: PeopleCardData) => (
+      <PeopleCard
+        key={person.name}
+        name={person.name}
+        birth_year={person.birth_year}
+        height={person.height}
+        mass={person.mass}
+        created={person.created}
+        number_of_films={person.number_of_films}
+        gender={person.gender}
+        species={person.species}
+        homeworld={person.homeworld}
+      />
+    ));
+  };
 
   return (
     <div>
@@ -54,28 +87,7 @@ function RouteComponent() {
           <input type="submit" value="Search" />
         </form>
       </div>
-      <div>
-        {isPending ? (
-          isSearchSubmitted
-        ) : (
-          <div>
-            {data?.results.map((person: PeopleCardData) => (
-              <PeopleCard
-                key={person.name}
-                name={person.name}
-                birth_year={person.birth_year}
-                height={person.height}
-                mass={person.mass}
-                created={person.created}
-                number_of_films={person.number_of_films}
-                gender={person.gender}
-                species={person.species}
-                homeworld={person.homeworld}
-              />
-            ))}
-          </div>
-        )}
-      </div>
+      <div>{renderSearchResults()}</div>
     </div>
   );
 }
