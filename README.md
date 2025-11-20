@@ -1,73 +1,57 @@
-# React + TypeScript + Vite
+# Star Wars Character Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Explore the galaxy far, far away with this interactive Star Wars character application! Built with cutting-edge web technologies, this project allows users to browse, search, and discover details about their favorite characters from the Star Wars universe. Leveraging the power of Vite for a lightning-fast development experience, React for a dynamic user interface, TypeScript for robust type safety, and TanStack Router for seamless navigation, this application provides a modern and responsive experience. Dive into the world of Jedi, Sith, and all the iconic figures with an intuitive interface and efficient data fetching powered by TanStack Query.
 
-Currently, two official plugins are available:
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=abhishekjkrsna_vanilla-react&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=abhishekjkrsna_vanilla-react)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=abhishekjkrsna_vanilla-react&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=abhishekjkrsna_vanilla-react)
 
-## React Compiler
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=abhishekjkrsna_vanilla-react&metric=bugs)](https://sonarcloud.io/summary/new_code?id=abhishekjkrsna_vanilla-react)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Live Demo
 
-## Expanding the ESLint configuration
+You can find a live demo of the application [here](https://abhishekjkrsna.github.io/vanilla-react).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Fetches and displays a list of Star Wars characters from the [SWAPI API](https://swapi.dev/).
+- Allows you to search for characters by name.
+- Pagination to navigate through the list of characters.
+- Responsive design that works on all devices.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Vite:** A fast build tool for modern web projects.
+- **React:** A JavaScript library for building user interfaces.
+- **TypeScript:** A typed superset of JavaScript that compiles to plain JavaScript.
+- **TanStack Router:** A fully type-safe router for React.
+- **TanStack Query:** A powerful data synchronization library for React.
+- **Pico.css:** A minimal CSS framework for semantic HTML.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+To get a local copy up and running, follow these simple steps.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [Yarn](https://yarnpkg.com/)
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/abhishekjkrsna/vanilla-react.git
+   ```
+2. Install NPM packages
+   ```sh
+   yarn install
+   ```
+3. Start the development server
+   ```sh
+   yarn dev
+   ```
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
