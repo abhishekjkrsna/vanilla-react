@@ -31,6 +31,14 @@ function RouteComponent() {
     setSearchVal("");
   }
 
+  const isSearchSubmitted = submittedSearch ? (
+    <div>
+      <h3>Loading...</h3>
+    </div>
+  ) : (
+    <div></div>
+  );
+
   return (
     <div>
       <h2>Search Characters By Name</h2>
@@ -48,13 +56,7 @@ function RouteComponent() {
       </div>
       <div>
         {isPending ? (
-          submittedSearch ? (
-            <div>
-              <h3>Loading...</h3>
-            </div>
-          ) : (
-            <div></div>
-          )
+          isSearchSubmitted
         ) : (
           <div>
             {data?.results.map((person: PeopleCardData) => (

@@ -54,12 +54,12 @@ export default function PeopleCard({
             <p>Birth year: {birth_year}</p>
             <p>Gender: {gender}</p>
             <p>Species: {species}</p>
-            {showHome ? (
+            {showHome && homeworld ? (
               <Suspense fallback={<div>Loading the data...</div>}>
                 <HomeWorld homeWorldUrl={homeworld} />
               </Suspense>
             ) : (
-              <div></div>
+              <></>
             )}
             <div className="grid">
               <button

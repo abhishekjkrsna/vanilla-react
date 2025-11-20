@@ -4,26 +4,6 @@ import { fetchUrl } from "../../services/api";
 export default function HomeWorld({
   homeWorldUrl,
 }: Readonly<{ homeWorldUrl: string }>) {
-  const noData = (
-    <>
-      <p>
-        <strong>Home world: </strong>Unknown
-      </p>
-      <p>
-        <strong>Climate: </strong>Unknown
-      </p>
-      <p>
-        <strong>Terrain: </strong>Unknown
-      </p>
-      <p>
-        <strong>Population: </strong>Unknown
-      </p>
-    </>
-  );
-  if (!homeWorldUrl) {
-    return noData;
-  }
-
   const {
     isLoading: isHomeWorldLoading,
     isError: isHomeWorldError,
@@ -40,11 +20,7 @@ export default function HomeWorld({
     return <p>Loading...</p>;
   }
 
-  if (isHomeWorldError) {
-    return <p>Something went wrong...</p>;
-  }
-
-  if (!isSuccess || !homeWorldData) {
+  if (isHomeWorldError || !isSuccess || !homeWorldData) {
     return <p>Something went wrong...</p>;
   }
 

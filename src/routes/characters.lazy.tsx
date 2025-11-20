@@ -43,11 +43,11 @@ function CharacterPage() {
   return (
     <div className="container">
       <div>
-        {groups.map((group, groupIdx) => (
-          <div className="grid" key={`group-${groupIdx}`}>
+        {groups.map((group, id) => (
+          <div className="grid" key={`group-${id}`}>
             {group.map((person: PeopleCardData) => (
               <PeopleCard
-                key={`${person.name}-${groupIdx}`}
+                key={`${person.name}-${id}`}
                 name={person.name}
                 birth_year={person.birth_year}
                 height={person.height}
