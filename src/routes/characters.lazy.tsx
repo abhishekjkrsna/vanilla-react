@@ -34,24 +34,36 @@ function CharacterPage() {
     return <div>No results found</div>;
   }
 
+  // Split results into groups of 3 for row rendering
+  const groups: PeopleCardData[][] = [];
+  for (let i = 0; i < data!.results.length; i += 3) {
+    groups.push(data!.results.slice(i, i + 3));
+  }
+
   return (
-    <div>
-      {data!.results.map((person: PeopleCardData) => (
-        <PeopleCard
-          key={person.name}
-          name={person.name}
-          birth_year={person.birth_year}
-          height={person.height}
-          mass={person.mass}
-          created={person.created}
-          number_of_films={person.number_of_films}
-          gender={person.gender}
-          species={person.species}
-          home_world={person.home_world}
-        />
-      ))}
+    <div className="container">
       <div>
-        <div>
+        {groups.map((group, groupIdx) => (
+          <div className="grid" key={`group-${groupIdx}`}>
+            {group.map((person: PeopleCardData) => (
+              <PeopleCard
+                key={`${person.name}-${groupIdx}`}
+                name={person.name}
+                birth_year={person.birth_year}
+                height={person.height}
+                mass={person.mass}
+                created={person.created}
+                number_of_films={person.number_of_films}
+                gender={person.gender}
+                species={person.species}
+                homeworld={person.homeworld}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+      <div className="grid container-fluid">
+        <div className="grid">
           <button
             disabled={pageNum === 1}
             onClick={() => {
@@ -62,10 +74,10 @@ function CharacterPage() {
             Previous
           </button>
         </div>
-        <div>
+        <div className="grid" style={{ textAlign: "center" }}>
           <h3>{pageNum}</h3>
         </div>
-        <div>
+        <div className="grid">
           <button
             onClick={() => {
               setPageNum(pageNum + 1);
