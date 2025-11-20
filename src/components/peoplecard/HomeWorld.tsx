@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchHome } from "../../services/api";
-import { useDebugValue } from "react";
 
 export default function HomeWorld({ homeWorldUrl }: { homeWorldUrl: string }) {
   const noData = (
