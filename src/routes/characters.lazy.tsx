@@ -56,7 +56,7 @@ function CharacterPage() {
                 number_of_films={person.number_of_films}
                 gender={person.gender}
                 species={person.species}
-                home_world={person.home_world}
+                homeworld={person.homeworld}
               />
             ))}
           </div>

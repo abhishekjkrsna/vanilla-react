@@ -1,5 +1,7 @@
 import type { PeopleCardData } from "../../types/types";
-import { useRef } from "react";
+import { lazy, Suspense, useRef, useState } from "react";
+
+const HomeWorld = lazy(() => import("./HomeWorld"));
 
 export default function PeopleCard({
   name,
@@ -10,18 +12,21 @@ export default function PeopleCard({
   birth_year,
   gender,
   species,
-  home_world,
+  homeworld,
 }: PeopleCardData) {
   const photoUrl = `img/${gender}/face1.png`;
+  const [showHome, setShowHome] = useState(false);
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   function openModal() {
     dialogRef.current?.showModal();
+    setShowHome(true);
   }
 
   function closeModal() {
     dialogRef.current?.close();
+    setShowHome(false);
   }
 
   return (
@@ -49,10 +54,13 @@ export default function PeopleCard({
             <p>Birth year: {birth_year}</p>
             <p>Gender: {gender}</p>
             <p>Species: {species}</p>
-            <p>Home world: {home_world.name}</p>
-            <p>Climate: {home_world.climate}</p>
-            <p>Terrain: {home_world.terrain}</p>
-            <p>Population: {home_world.population}</p>
+            {showHome ? (
+              <Suspense fallback={<div>Loading the data...</div>}>
+                <HomeWorld homeWorldUrl={homeworld} />
+              </Suspense>
+            ) : (
+              <div></div>
+            )}
             <div className="grid">
               <button
                 id="cancel"

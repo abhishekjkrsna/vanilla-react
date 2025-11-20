@@ -26,7 +26,7 @@ export interface PeopleCardData {
   birth_year: string;
   species: string;
   gender: string;
-  home_world: HomeWorld;
+  homeworld: string;
 }
 
 export interface PeopleData {
