@@ -27,7 +27,7 @@ function CharacterPage() {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <progress />;
   }
 
   if (!isLoading && !data) {

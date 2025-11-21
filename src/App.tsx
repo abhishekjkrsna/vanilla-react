@@ -27,12 +27,7 @@ function App() {
     <LoggedInContext.Provider value={loggedInContextValue}>
       <PageNumberContext.Provider value={PageNumberContextValue}>
         <QueryClientProvider client={queryClient}>
-          <RouterProvider
-            router={router}
-            context={{
-              auth: { loggedIn, setLoggedIn },
-            }}
-          />
+          <RouterProvider router={router} />
         </QueryClientProvider>
       </PageNumberContext.Provider>
     </LoggedInContext.Provider>

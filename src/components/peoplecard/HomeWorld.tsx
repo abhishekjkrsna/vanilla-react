@@ -17,7 +17,7 @@ export default function HomeWorld({
   });
 
   if (isHomeWorldLoading) {
-    return <p>Loading...</p>;
+    return <progress />;
   }
 
   if (isHomeWorldError || !isSuccess || !homeWorldData) {

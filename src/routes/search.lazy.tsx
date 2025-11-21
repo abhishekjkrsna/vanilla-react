@@ -35,7 +35,7 @@ function RouteComponent() {
     if (isPending && submittedTerm) {
       return (
         <div>
-          <h3>Loading...</h3>
+          <progress />
         </div>
       );
     }
