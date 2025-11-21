@@ -16,7 +16,7 @@ function RouteComponent() {
       <ul>
         <li>Tanstack Router</li>
         <li>Tanstack Query</li>
-        <li>Tailwind CSS</li>
+        <li>Pico CSS</li>
         <li>React 19</li>
       </ul>
       <h3>Login using userName admin and password admin</h3>

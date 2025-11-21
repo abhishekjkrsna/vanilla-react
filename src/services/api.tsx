@@ -1,6 +1,6 @@
 import type { FetchPeopleApi, PeopleData } from "../types/types";
 import { swapiBaseUrl } from "./config";
-export async function fetchPeople(page: number = 1) {
+export async function fetchPeople(page: number) {
   const url = `${swapiBaseUrl}/people/?page=${page}`;
 
   const response = await fetch(url, {
