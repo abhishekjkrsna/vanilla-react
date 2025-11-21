@@ -1,7 +1,6 @@
 import type { PeopleCardData } from "../../types/types";
-import { lazy, Suspense, useRef, useState } from "react";
-
-const HomeWorld = lazy(() => import("./HomeWorld"));
+import { useRef, useState } from "react";
+import HomeWorld from "./HomeWorld";
 
 export default function PeopleCard({
   name,
@@ -55,9 +54,7 @@ export default function PeopleCard({
             <p>Gender: {gender}</p>
             <p>Species: {species}</p>
             {showHome && homeworld ? (
-              <Suspense fallback={<div>Loading the data...</div>}>
-                <HomeWorld homeWorldUrl={homeworld} />
-              </Suspense>
+              <HomeWorld homeWorldUrl={homeworld} />
             ) : (
               <></>
             )}
