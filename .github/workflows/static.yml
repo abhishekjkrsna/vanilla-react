@@ -43,23 +43,28 @@ jobs:
       - name: Install dependencies
         run: npm i yarn
 
-      # Step 3: Build the React application
+      # Step 3: Test the React application
+      # Using 'yarn test' to run the tests
+      - name: Testing
+        run: yarn test
+
+      # Step 4: Build the React application
       # This assumes your build script is 'npm run build'
       - name: Build
         run: yarn build
 
-      # Step 4: Setup GitHub Pages
+      # Step 5: Setup GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # Step 5: Upload the build artifact
+      # Step 6: Upload the build artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload the 'dist' directory (or 'build' if you use Create React App)
           path: "./dist"
 
-      # Step 6: Deploy to GitHub Pages
+      # Step 7: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
